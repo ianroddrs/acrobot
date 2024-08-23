@@ -11,13 +11,33 @@
     {% bootstrap_javascript %}
     <link rel="stylesheet" href="{% static 'css/bootstrap-icons.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/normalize.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
     {% block css %}{% endblock %}
     {% block js %}{% endblock %}
     <title>ACROBOT | {% block title %}{% endblock %}</title>
 </head>
 <body>
-    <header></header>
-    <main>
+    <header class="p-2 bg-dark">
+        <nav class="container d-flex align-items-center justify-content-center text-white">
+            <span class="fw-bold mx-3">ACROBOT</span>
+            <ul class="nav nav-underline me-auto">
+                <li class="nav-item">
+                  <a class="nav-link active text-secondary" aria-current="page" href="#">Página Inicial</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="#">Link1</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="#">Link2</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="#">Link3</a>
+                </li>
+              </ul>
+              <span>Login</span>
+        </nav>
+    </header>
+    <main class="container">
         {% block content %}{% endblock %}
     </main>
 </body>
