@@ -1,0 +1,6 @@
+env/
+core/.env
+core/__pycache__/
+apps/main/migrations
+apps/main/__pycache__/
+db.sqlite3
