@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block js %}
+<script src="{% static 'js/acrobot.js' %}" defer></script>
 {% endblock %}
 
 {% block title %}
@@ -13,11 +14,35 @@ Página Inicial
 
 {% block content %}
 <div class="row gap-3 my-3">
-    <div class="col-3 bg-light border rounded">
-        <br><br><br><br><br><br><br>
+    <div class="col-2 bg-light border rounded p-3">
+        <button type="button" onclick="addFilter('pessoa')">
+            <i class="bi bi-person-standing"></i>
+            Pessoa
+        </button>
+        <button type="button" onclick="addFilter('veiculo')">
+            <i class="bi bi-car-front-fill"></i>
+            Veiculo
+        </button>
+        <button type="button" onclick="addFilter('localidade')">
+            <i class="bi bi-geo-alt-fill"></i>
+            Localidade
+        </button>
     </div>
-    <div class="col bg-light border rounded">
-        <br><br><br><br><br><br><br>
+    <div class="col bg-light border rounded" id="filtros">
+        {% csrf_token %}
+        <div class="boletim">
+            <label for="data-fato">DATA FATO:</label>
+            <input type="text" id="data-fato">
+            <br>
+            <label for="data-registro">DATA REGISTRO:</label>
+            <input type="text" id="data-registro">
+            <br>
+            <label for="registro">REGISTRO:</label>
+            <input type="text" id="registro">
+            <br>
+            <label for="relato">RELATO:</label>
+            <input type="text" id="relato">
+        </div>
     </div>
 </div>
 {% endblock %}
