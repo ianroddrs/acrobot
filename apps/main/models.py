@@ -64,6 +64,26 @@ class BAIRROS(models.Model):
     aisp = models.ForeignKey(AISP,on_delete=models.DO_NOTHING, blank=True, null=True)
     situacao = models.ForeignKey(SITUACAO, on_delete=models.CASCADE)
 
+class BOP_TATUAGEM(models.Model):
+    nro_bop = models.CharField(max_length=50)
+    local_tatuagem = models.ForeignKey(LOCAL_TATUAGEM,on_delete=models.DO_NOTHING)
+
+class BOP_VEICULO(models.Model):
+    nro_bop = models.CharField(max_length=50)
+    veiculo = models.ForeignKey(VEICULO,on_delete=models.DO_NOTHING, blank=True, null=True)
+    cor = models.ForeignKey(COR,on_delete=models.DO_NOTHING, blank=True, null=True)
+
+
+class BOP_PLACA_VEICULO(models.Model):
+    nro_bop = models.CharField(max_length=50)
+    placa_veiculo = models.ForeignKey(VEICULO_PLACA,on_delete=models.DO_NOTHING)
+
+class BOP_CABELO(models.Model):
+    nro_bop = models.CharField(max_length=50)
+    tipo_cabelo = models.ForeignKey(CABELO_TIPO,on_delete=models.DO_NOTHING, blank=True, null=True)
+    cor_cabelo = models.ForeignKey(CABELO_COR,on_delete=models.DO_NOTHING, blank=True, null=True)
+    comprimento_cabelo = models.ForeignKey(CABELO_COMPRIMENTO,on_delete=models.DO_NOTHING, blank=True, null=True)
+
 class BOP(models.Model):
     nro_bop = models.CharField(max_length=50, unique=True)
     data_registro = models.DateTimeField()
@@ -75,28 +95,11 @@ class BOP(models.Model):
     municipio = models.ForeignKey(MUNICIPIOS, on_delete=models.DO_NOTHING)
     latitude = models.FloatField(blank=True, null=True)
     longitude = models.FloatField(blank=True, null=True)
+    bop_tatuagem = models.ForeignKey(BOP_TATUAGEM, on_delete=models.CASCADE, blank=True, null=True)
+    bop_cabelo = models.ForeignKey(BOP_CABELO, on_delete=models.CASCADE, blank=True, null=True)
 
 class BOP_VESTIMENTA(models.Model):
-    nro_bop = models.CharField(max_length=50)
+    nro_bop = models.ForeignKey(BOP, on_delete=models.CASCADE)
     vestimenta = models.ForeignKey(VESTIMENTA, on_delete=models.DO_NOTHING, blank=True, null=True)
-    cor = models.ForeignKey(COR,on_delete=models.DO_NOTHING, blank=True, null=True)
+    cor = models.ForeignKey(COR, on_delete=models.DO_NOTHING, blank=True, null=True)
     estampa = models.ForeignKey(VESTIMENTA_ESTAMPA, on_delete=models.DO_NOTHING, blank=True, null=True)
-
-class BOP_VEICULO(models.Model):
-    nro_bop = models.CharField(max_length=50)
-    veiculo = models.ForeignKey(VEICULO,on_delete=models.DO_NOTHING, blank=True, null=True)
-    cor = models.ForeignKey(COR,on_delete=models.DO_NOTHING, blank=True, null=True)
-
-class BOP_TATUAGEM(models.Model):
-    nro_bop = models.CharField(max_length=50)
-    local_tatuagem = models.ForeignKey(LOCAL_TATUAGEM,on_delete=models.DO_NOTHING)
-
-class BOP_PLACA_VEICULO(models.Model):
-    nro_bop = models.CharField(max_length=50)
-    placa_veiculo = models.ForeignKey(VEICULO_PLACA,on_delete=models.DO_NOTHING)
-
-class BOP_CABELO(models.Model):
-    nro_bop = models.CharField(max_length=50)
-    tipo_cabelo = models.ForeignKey(CABELO_TIPO,on_delete=models.DO_NOTHING, blank=True, null=True)
-    cor_cabelo = models.ForeignKey(CABELO_COR,on_delete=models.DO_NOTHING, blank=True, null=True)
-    comprimento_cabelo = models.ForeignKey(CABELO_COMPRIMENTO,on_delete=models.DO_NOTHING, blank=True, null=True)
