@@ -29,6 +29,7 @@ Página Inicial
         </button>
     </div>
     <div class="col bg-light border rounded" id="filtros">
+        <button type="button" onclick="enviarJSON()">Pesquisar</button>
         {% csrf_token %}
         <div class="boletim">
             <label for="data-fato">DATA FATO:</label>
@@ -43,6 +44,10 @@ Página Inicial
             <label for="relato">RELATO:</label>
             <input type="text" id="relato">
         </div>
+        <div id="lista-pessoa"></div>
+        <div id="lista-veiculo"></div>
+        <div id="lista-localidade"></div>
+        <div id="resultado"></div>
     </div>
 </div>
 {% endblock %}

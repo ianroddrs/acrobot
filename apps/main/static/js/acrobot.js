@@ -7,7 +7,7 @@ function addFilter(filtro) {
         const parser = new DOMParser();
         const html = parser.parseFromString(htmlString, 'text/html');
         const elemento = html.body.firstChild;
-        filtros.appendChild(elemento);
+        filtros.querySelector(`#lista-${filtro}`).appendChild(elemento)
     });
 };
 
@@ -91,12 +91,16 @@ function enviarJSON() {
     localidades = localidadesDict()
 
     
-    let json = {
-        boletim:boletim,
-        pessoas: pessoas,
-        veiculos: veiculos,
-        localidades: localidades
-    };
+    // let json = {
+    //     boletim:boletim,
+    //     pessoas: pessoas,
+    //     veiculos: veiculos,
+    //     localidades: localidades
+    // };
+
+    let json = {'boletim': {'dataFato': '2023-08-19', 'dataRegistro': '2023-08-20', 'registro': 'ROUBO', 'relato': 'ARMA DE FOGO'}, 'pessoas': [{'vestimenta': {'cor': 'AZUL', 'estampa': 'LISTRADO', 'tipo': 'BLUSA'}, 'tatuagem': {'local': 'PERNA'}, 'caracteristicasSomaticas': {'cabelo': {'tipo': 'LISO', 'cor': 'PRETO', 'comprimento': 'CURTO'}, 'estatura': 'ALTO', 'compleicao': 'GORDO', 'olhosCor': 'CASTANHOS'}}, {'vestimenta': {'cor': 'PRETO', 'estampa': 'QUADRICULADO', 'tipo': 'JAQUETA  '}, 'tatuagem': {'local': 'COSTAS'}, 'caracteristicasSomaticas': {'cabelo': {'tipo': 'ENROLADO', 'cor': 'CASTANHO', 'comprimento': 'LONGO'}, 'estatura': 'BAIXO', 'compleicao': 'MAGRO', 'olhosCor': 'CASTANHOS'}}], 'veiculos': [{'cor': 'PRETO', 'modelo': 'ARGO', 'marca': 'FIAT', 'tipo': 'CARRO', 'placa': 'XYT8Y992'}, {'cor': 'AZUL', 'modelo': 'FAZER', 'marca': 'YAMAHA', 'tipo': 'MOTO', 'placa': 'YTR5Y678'}], 'localidades': [{'risp': '1', 'municipio': 'BELEM', 'distrito': 'BELEM', 'aisp': '3', 'bairro': 'MARCO'}]}
+
+    console.log(json)
 
     let token = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
 
@@ -108,6 +112,15 @@ function enviarJSON() {
       body: `csrfmiddlewaretoken=${token}&data=${JSON.stringify(json)}`
     })
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => {
+        resultado = filtros.querySelector('#resultado')
+        resultado.innerHTML= ''
+        data.forEach(item=>{
+            div_item = document.createElement('div')
+            div_item.innerHTML = item['nro_bop']
+            resultado.appendChild(div_item)
+        })
+        console.log(data)
+    })
     .catch(error => console.error(error));
 }
