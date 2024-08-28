@@ -91,16 +91,16 @@ function enviarJSON() {
     localidades = localidadesDict()
 
     
-    // let json = {
-    //     boletim:boletim,
-    //     pessoas: pessoas,
-    //     veiculos: veiculos,
-    //     localidades: localidades
-    // };
+    let json = {
+        boletim:boletim,
+        pessoas: pessoas,
+        veiculos: veiculos,
+        localidades: localidades
+    };
 
-    let json = {'boletim': {'dataFato': '2023-08-19', 'dataRegistro': '2023-08-20', 'registro': 'ROUBO', 'relato': 'ARMA DE FOGO'}, 'pessoas': [{'vestimenta': {'cor': 'AZUL', 'estampa': 'LISTRADO', 'tipo': 'BLUSA'}, 'tatuagem': {'local': 'PERNA'}, 'caracteristicasSomaticas': {'cabelo': {'tipo': 'LISO', 'cor': 'PRETO', 'comprimento': 'CURTO'}, 'estatura': 'ALTO', 'compleicao': 'GORDO', 'olhosCor': 'CASTANHOS'}}, {'vestimenta': {'cor': 'PRETO', 'estampa': 'QUADRICULADO', 'tipo': 'JAQUETA  '}, 'tatuagem': {'local': 'COSTAS'}, 'caracteristicasSomaticas': {'cabelo': {'tipo': 'ENROLADO', 'cor': 'CASTANHO', 'comprimento': 'LONGO'}, 'estatura': 'BAIXO', 'compleicao': 'MAGRO', 'olhosCor': 'CASTANHOS'}}], 'veiculos': [{'cor': 'PRETO', 'modelo': 'ARGO', 'marca': 'FIAT', 'tipo': 'CARRO', 'placa': 'XYT8Y992'}, {'cor': 'AZUL', 'modelo': 'FAZER', 'marca': 'YAMAHA', 'tipo': 'MOTO', 'placa': 'YTR5Y678'}], 'localidades': [{'risp': '1', 'municipio': 'BELEM', 'distrito': 'BELEM', 'aisp': '3', 'bairro': 'MARCO'}]}
+    // let json = {'boletim': {'dataFato': '2023-08-19', 'dataRegistro': '2023-08-20', 'registro': 'ROUBO', 'relato': 'ARMA DE FOGO'}, 'pessoas': [{'vestimenta': {'cor': 'AZUL', 'estampa': 'LISTRADO', 'tipo': 'BLUSA'}, 'tatuagem': {'local': 'PERNA'}, 'caracteristicasSomaticas': {'cabelo': {'tipo': 'LISO', 'cor': 'PRETO', 'comprimento': 'CURTO'}, 'estatura': 'ALTO', 'compleicao': 'GORDO', 'olhosCor': 'CASTANHOS'}}, {'vestimenta': {'cor': 'PRETO', 'estampa': 'QUADRICULADO', 'tipo': 'JAQUETA  '}, 'tatuagem': {'local': 'COSTAS'}, 'caracteristicasSomaticas': {'cabelo': {'tipo': 'ENROLADO', 'cor': 'CASTANHO', 'comprimento': 'LONGO'}, 'estatura': 'BAIXO', 'compleicao': 'MAGRO', 'olhosCor': 'CASTANHOS'}}], 'veiculos': [{'cor': 'PRETO', 'modelo': 'ARGO', 'marca': 'FIAT', 'tipo': 'CARRO', 'placa': 'XYT8Y992'}, {'cor': 'AZUL', 'modelo': 'FAZER', 'marca': 'YAMAHA', 'tipo': 'MOTO', 'placa': 'YTR5Y678'}], 'localidades': [{'risp': '1', 'municipio': 'BELEM', 'distrito': 'BELEM', 'aisp': '3', 'bairro': 'MARCO'}]}
 
-    console.log(json)
+    console.log(JSON.stringify(json))
 
     let token = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
 
